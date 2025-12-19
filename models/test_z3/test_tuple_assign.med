@@ -1,0 +1,27 @@
+automaton test_tuple_assign() {
+    variables {
+        a : int init 1;
+        b : int init 2;
+        c : int init 10;
+        d : int init 20;
+    }
+    transitions {
+        true -> {
+            // Parallel assignment
+            (a, b) = (c, d);
+            
+            // Swap test (requires parallel semantics)
+            (c, d) = (d, c);
+        }
+    }
+
+    properties {
+        p_safe : (a == 1 && b == 2) && A X (a == 10 && b == 20 && c == 20 && d == 10);
+    }
+}
+
+system sys() {
+    components {
+        test : test_tuple_assign;
+    }
+}

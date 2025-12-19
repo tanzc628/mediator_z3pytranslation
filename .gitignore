@@ -6,6 +6,7 @@
 /examples/
 /org-classes.jar
 /sources.txt
+/paper/
 
 
 # Ignore large local Gradle distribution used for offline wrapper
